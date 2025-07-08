@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +8,10 @@
         :root {
             --primary: #06b6d4;
             --primary-dark: #0891b2;
-            --secondary: #ecfeff;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --success: #10b981;
-            --background: #f8fafc;
-            --card-bg: #ffffff;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-        }
-
-        [data-theme="dark"] {
-            --primary: #06b6d4;
-            --primary-dark: #0891b2;
             --secondary: #083344;
             --dark: #f8fafc;
             --light: #1e293b;
+            --success: #10b981;
             --background: #0f172a;
             --card-bg: #1e293b;
             --text: #f8fafc;
@@ -58,31 +45,6 @@
             max-width: 500px;
             overflow: hidden;
             position: relative;
-        }
-        
-        .theme-switch {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            border-radius: 50px;
-            width: 50px;
-            height: 26px;
-            padding: 3px;
-            cursor: pointer;
-            z-index: 10;
-        }
-        
-        .theme-switch-inner {
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-        
-        [data-theme="dark"] .theme-switch-inner {
-            transform: translateX(24px);
         }
         
         .payment-header {
@@ -404,7 +366,9 @@
                 height: 22px;
             }
             
-            [data-theme="dark"] .theme-switch-inner {
+            .theme-switch-inner {
+                width: 16px;
+                height: 16px;
                 transform: translateX(18px);
             }
         }
@@ -414,9 +378,6 @@
     <div class="payment-container">
         <div class="payment-header">
             <h1>Payment Gateway</h1>
-            <div class="theme-switch" onclick="toggleTheme()">
-                <div class="theme-switch-inner"></div>
-            </div>
         </div>
         
         <div class="payment-body">
@@ -589,18 +550,9 @@
             }
         }
         
-        // Check for saved theme preference
-        function checkTheme() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            }
-        }
-        
-        // Default select QRIS and check theme
+        // Default select QRIS
         window.onload = function() {
             selectPayment('qris');
-            checkTheme();
         };
     </script>
 </body>
